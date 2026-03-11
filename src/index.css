@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  /* Root colors */
   :root {
     --bg-primary: #04070f;
     --bg-secondary: #080d1a;
@@ -15,73 +14,65 @@
     --text-muted: #64748b;
   }
 
-  /* Reset */
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
-  /* Smooth scroll */
-  html {
+  html, body {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw; /* Crucial strict limit for small phones */
   }
 
-  /* Body styles */
   body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    font-family: "Manrope", sans-serif;
-    overflow-x: hidden;
+    font-family: 'Manrope', sans-serif;
     -webkit-font-smoothing: antialiased;
-  }
-
-  /* Prevent mobile overflow */
-  section {
-    width: 100%;
-    overflow-x: hidden;
   }
 
   /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 6px; /* Slightly thicker for better usability */
+    width: 5px;
   }
-
   ::-webkit-scrollbar-track {
     background: var(--bg-primary);
   }
-
   ::-webkit-scrollbar-thumb {
-    background: rgba(34, 211, 238, 0.4);
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-cyan);
+    border-radius: 10px;
   }
 
   /* Selection */
   ::selection {
     background: rgba(34, 211, 238, 0.25);
-    color: white;
+    color: #fff;
   }
 }
 
 @layer components {
-  /* Buttons */
+  /* Button styles - Adjusted for mobile with flexbox for icon alignment */
   .btn-primary {
     background: linear-gradient(135deg, var(--accent-cyan), #0891b2);
     color: var(--bg-primary);
     font-weight: 700;
-    border-radius: 0.5rem; /* 8px */
-    padding: 0.75rem 1.5rem; /* 12px 24px */
+    border-radius: 8px;
+    padding: 10px 20px; /* Slightly smaller padding for mobile */
     transition: all 0.3s ease;
-    font-family: "Syne", sans-serif;
-    /* Added flex properties to ensure icons/text align perfectly */
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 0.02em;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .btn-primary {
+      padding: 12px 28px; /* Desktop padding */
+    }
   }
 
   .btn-primary:hover {
@@ -93,21 +84,29 @@
     background: transparent;
     color: var(--accent-cyan);
     font-weight: 600;
-    border-radius: 0.5rem;
+    border-radius: 8px;
     border: 1.5px solid rgba(34, 211, 238, 0.5);
-    padding: 0.75rem 1.5rem;
+    padding: 10px 20px; /* Slightly smaller padding for mobile */
     transition: all 0.3s ease;
-    font-family: "Syne", sans-serif;
-    /* Added flex properties to ensure icons/text align perfectly */
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 0.02em;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
   }
 
+  @media (min-width: 640px) {
+    .btn-outline {
+      padding: 12px 28px; /* Desktop padding */
+    }
+  }
+
   .btn-outline:hover {
     background: rgba(34, 211, 238, 0.08);
     border-color: var(--accent-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(34, 211, 238, 0.15);
   }
 
   /* Card hover */
@@ -115,7 +114,6 @@
     transition: all 0.3s ease;
     border: 1px solid var(--border);
   }
-
   .card-hover:hover {
     border-color: rgba(34, 211, 238, 0.3);
     transform: translateY(-4px);
@@ -130,17 +128,15 @@
     background-size: 28px 28px;
   }
 
-  /* Gradient text */
-  .gradient-text {
-    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-violet) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* Glow effects */
+  .glow-cyan {
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.12), 0 0 60px rgba(34, 211, 238, 0.06);
   }
-
-  /* MISSING CLASS ADDED: Used in your React Hero section */
+  .glow-cyan-sm {
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.15);
+  }
   .text-glow-cyan {
-    text-shadow: 0 0 20px rgba(34, 211, 238, 0.4), 0 0 40px rgba(34, 211, 238, 0.1);
+    text-shadow: 0 0 30px rgba(34, 211, 238, 0.5);
   }
 
   /* Reveal animation */
@@ -149,46 +145,70 @@
     transform: translateY(28px);
     transition: opacity 0.65s ease, transform 0.65s ease;
   }
-
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
 
-  /* Section padding */
-  .section-pad {
-    padding: 80px 0;
+  /* Noise overlay */
+  .noise::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 
-  @media (max-width: 768px) {
+  /* Section padding - Now mobile first */
+  .section-pad {
+    padding: 60px 0; /* Tightened up for small phones */
+  }
+  @media (min-width: 768px) {
     .section-pad {
-      padding: 60px 0;
+      padding: 100px 0; /* Back to original for tablets/desktop */
     }
   }
 
-  /* Section titles */
+  /* Section title */
   .section-label {
-    font-family: "JetBrains Mono", monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
     color: var(--accent-cyan);
     letter-spacing: 0.15em;
     text-transform: uppercase;
+    margin-bottom: 10px;
   }
-
+  
   .section-title {
-    font-family: "Syne", sans-serif;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-family: 'Syne', sans-serif;
+    /* Adjusted the minimum clamp size down slightly for 300px width screens */
+    font-size: clamp(1.75rem, 8vw, 3rem); 
     font-weight: 800;
     color: var(--text-primary);
+    line-height: 1.1;
   }
 
-  /* Cursor animation */
+  /* Mobile menu */
+  .mobile-menu {
+    transition: all 0.3s ease;
+  }
+
+  /* Typewriter cursor */
   .cursor {
     display: inline-block;
     width: 3px;
     height: 1em;
     background-color: var(--accent-cyan);
     margin-left: 4px;
+    vertical-align: middle;
     animation: blink 1s step-end infinite;
   }
 }

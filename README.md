@@ -7,21 +7,17 @@ A dark-mode, minimal, and animated portfolio website built with **React + Vite +
 ## 🚀 Getting Started
 
 ### 1. Install dependencies
-
 ```bash
 npm install
 ```
 
 ### 2. Run development server
-
 ```bash
 npm run dev
 ```
-
 Open `http://localhost:5173` in your browser.
 
 ### 3. Build for production
-
 ```bash
 npm run build
 ```
@@ -34,14 +30,14 @@ npm run build
 portfolio/
 ├── public/
 │   ├── favicon.svg
-│   └── resume.pdf
+│   └── resume.pdf          ← ADD YOUR RESUME HERE
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.jsx
 │   │   ├── Hero.jsx
 │   │   ├── About.jsx
 │   │   ├── Skills.jsx
-│   │   ├── Projects.jsx
+│   │   ├── Projects.jsx    ← ADD YOUR PROJECTS HERE
 │   │   ├── CodingProfiles.jsx
 │   │   ├── Contact.jsx
 │   │   ├── Footer.jsx
@@ -62,57 +58,36 @@ portfolio/
 ## ✅ Before Deploying
 
 ### 1. Add your Resume PDF
+Place your resume file as `public/resume.pdf`. The "Download Resume" button will link to it.
 
-Place your resume file inside:
-
-```
-public/resume.pdf
-```
-
-The **Download Resume** button will automatically download this file.
-
----
-
-### 2. Add Your Projects
-
-Edit this file:
-
-```
-src/components/Projects.jsx
-```
-
-Example:
-
-```javascript
+### 2. Add Real Projects
+Edit `src/components/Projects.jsx`:
+```js
 const projects = [
   {
     id: 1,
-    title: "Project Name",
-    description: "Short description of your project",
-    tech: ["React", "Node.js"],
-    github: "https://github.com/yourusername/project",
-    live: "https://project-demo.com"
-  }
+    placeholder: false,             // set to false
+    title: 'Your Project Name',
+    description: 'What it does...',
+    tech: ['React', 'Node.js'],
+    github: 'https://github.com/...',
+    live: 'https://...',           // optional
+  },
+  // ...
 ];
 ```
 
----
-
-### 3. Activate Contact Form (Optional)
-
-You can use **Formspree**.
-
-1. Go to https://formspree.io
-2. Create a form
-3. Replace the API URL in `Contact.jsx`.
-
-Example:
-
-```javascript
-const res = await fetch("https://formspree.io/f/YOUR_ID", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(form)
+### 3. Activate the Contact Form
+The form is ready but needs a backend/service to actually send emails.
+Easiest option — **Formspree**:
+1. Go to [formspree.io](https://formspree.io) and create a form
+2. Get your form ID (e.g. `xkndlpqz`)
+3. In `Contact.jsx`, replace the simulate block with:
+```js
+const res = await fetch('https://formspree.io/f/YOUR_ID', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(form),
 });
 ```
 
@@ -120,27 +95,26 @@ const res = await fetch("https://formspree.io/f/YOUR_ID", {
 
 ## 🌐 Deploy on Vercel
 
-1. Push the project to **GitHub**
-2. Go to **Vercel**
-3. Import your repository
-4. Framework: **Vite**
-5. Click **Deploy**
+1. Push this project to a **GitHub repository**
+2. Go to [vercel.com](https://vercel.com) → Import Project
+3. Select your repo → Framework: **Vite**
+4. Click **Deploy** — done!
 
-Your site will be live in seconds.
+The `vercel.json` file already handles client-side routing.
 
 ---
 
 ## 🎨 Customization
 
-| File                                | What to edit                     |
-| ----------------------------------- | -------------------------------- |
-| `src/components/Hero.jsx`           | Name and title                   |
-| `src/components/About.jsx`          | About text                       |
-| `src/components/Skills.jsx`         | Skills                           |
-| `src/components/Projects.jsx`       | Your projects                    |
-| `src/components/CodingProfiles.jsx` | GitHub, LinkedIn, LeetCode links |
+| File | What to edit |
+|------|-------------|
+| `src/components/Hero.jsx` | Name, title, tagline |
+| `src/components/About.jsx` | About text, highlights |
+| `src/components/Skills.jsx` | Skill names, levels |
+| `src/components/Projects.jsx` | Project cards |
+| `src/components/CodingProfiles.jsx` | Social links |
+| `src/index.css` | Color variables, fonts |
 
 ---
 
-Built with **React + Vite + Tailwind CSS**
-Portfolio by **Prajwal Ganpat Korgaonkar**
+Built with React + Vite + Tailwind CSS | Deployed on Vercel

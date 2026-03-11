@@ -55,10 +55,10 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      /* Added overflow-hidden to strictly cut off anything trying to push the width */
+      /* Added overflow-hidden and w-full to absolutely prevent horizontal scrolling */
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden w-full px-4 py-20"
     >
-      {/* Background radial glow */}
+      {/* Background radial glow - Scaled down for mobile so it doesn't break width */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[700px] md:h-[700px] rounded-full pointer-events-none"
         style={{
@@ -67,14 +67,14 @@ export default function Hero() {
         }}
       />
 
-      {/* Corner decorations - Moved closer to edges for tiny screens */}
+      {/* Corner decorations - Made smaller and pulled inwards for mobile screens */}
       <div className="absolute top-8 left-2 md:top-24 md:left-8 w-6 h-6 md:w-16 md:h-16 border-l-2 border-t-2 border-[#22d3ee]/20 rounded-tl-lg pointer-events-none" />
       <div className="absolute bottom-8 right-2 md:bottom-24 md:right-8 w-6 h-6 md:w-16 md:h-16 border-r-2 border-b-2 border-[#22d3ee]/20 rounded-br-lg pointer-events-none" />
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center">
         
-        {/* Badge - Allowed to shrink and wrap if necessary */}
+        {/* Badge - Allowed to shrink on tiny screens */}
         <div
           className={`inline-flex items-center justify-center gap-2 bg-[#0c1326] border border-[#1a2540] rounded-full px-3 py-1.5 md:px-4 md:py-2 mb-6 md:mb-8 w-fit max-w-[95%] transition-all duration-700 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -86,12 +86,12 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Name - Forced break-words and strict block layout for mobile */}
+        {/* Name - Forced block layout so first/last name ALWAYS stack vertically on mobile */}
         <h1
           className={`font-display font-extrabold leading-tight mb-4 w-full break-words transition-all duration-700 delay-100 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
-          style={{ fontSize: 'clamp(2rem, 10vw, 5.5rem)' }}
+          style={{ fontSize: 'clamp(2rem, 9vw, 5.5rem)' }}
         >
           <span className="block text-[#e2e8f0]">Prajwal</span>
           <span className="block gradient-text text-glow-cyan">Korgaonkar</span>
@@ -115,12 +115,12 @@ export default function Hero() {
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          Computer Engineering Student interested in <br className="hidden sm:block" />
+          Computer Engineering Student interested in <br className="block sm:hidden" />
           <span className="text-[#94a3b8]">Full Stack Development</span> and{' '}
           <span className="text-[#94a3b8]">Problem Solving</span>
         </p>
 
-        {/* Buttons - Strictly forced to column (stacked) on mobile w-full */}
+        {/* Buttons - STRICTLY FORCED to column (stacked) on mobile screens */}
         <div
           className={`flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0 transition-all duration-700 delay-[400ms] ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
@@ -160,7 +160,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator - Hidden on tiny mobile to save space */}
+      {/* Scroll indicator - Hidden on tiny mobile screens to save space */}
       <button
         onClick={() => handleScroll('#about')}
         className="hidden sm:flex absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-[#475569] hover:text-[#22d3ee] transition-colors animate-bounce"

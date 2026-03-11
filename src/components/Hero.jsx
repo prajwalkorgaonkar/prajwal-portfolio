@@ -51,7 +51,7 @@ export default function Hero() {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
-
+// Triggering fresh Vercel build
   return (
     <section
       id="hero"

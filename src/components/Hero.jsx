@@ -55,7 +55,8 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden w-full px-4 py-20"
+      /* Added overflow-hidden to strictly cut off anything trying to push the width */
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden w-full px-4 py-20"
     >
       {/* Background radial glow */}
       <div
@@ -66,15 +67,16 @@ export default function Hero() {
         }}
       />
 
-      {/* Corner decorations */}
-      <div className="absolute top-8 left-4 md:top-24 md:left-8 w-8 h-8 md:w-16 md:h-16 border-l-2 border-t-2 border-[#22d3ee]/20 rounded-tl-lg" />
-      <div className="absolute bottom-8 right-4 md:bottom-24 md:right-8 w-8 h-8 md:w-16 md:h-16 border-r-2 border-b-2 border-[#22d3ee]/20 rounded-br-lg" />
+      {/* Corner decorations - Moved closer to edges for tiny screens */}
+      <div className="absolute top-8 left-2 md:top-24 md:left-8 w-6 h-6 md:w-16 md:h-16 border-l-2 border-t-2 border-[#22d3ee]/20 rounded-tl-lg pointer-events-none" />
+      <div className="absolute bottom-8 right-2 md:bottom-24 md:right-8 w-6 h-6 md:w-16 md:h-16 border-r-2 border-b-2 border-[#22d3ee]/20 rounded-br-lg pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center">
-        {/* Badge */}
+      {/* Content Container */}
+      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center">
+        
+        {/* Badge - Allowed to shrink and wrap if necessary */}
         <div
-          className={`inline-flex items-center gap-2 bg-[#0c1326] border border-[#1a2540] rounded-full px-3 py-1.5 md:px-4 md:py-2 mb-6 md:mb-8 max-w-full transition-all duration-700 ${
+          className={`inline-flex items-center justify-center gap-2 bg-[#0c1326] border border-[#1a2540] rounded-full px-3 py-1.5 md:px-4 md:py-2 mb-6 md:mb-8 w-fit max-w-[95%] transition-all duration-700 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
@@ -84,24 +86,24 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Name - Adjusted for mobile width and forced block layout on small screens */}
+        {/* Name - Forced break-words and strict block layout for mobile */}
         <h1
           className={`font-display font-extrabold leading-tight mb-4 w-full break-words transition-all duration-700 delay-100 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
-          style={{ fontSize: 'clamp(1.8rem, 9vw, 5.5rem)' }}
+          style={{ fontSize: 'clamp(2rem, 10vw, 5.5rem)' }}
         >
-          <span className="block md:inline text-[#e2e8f0]">Prajwal </span>
-          <span className="block md:inline gradient-text text-glow-cyan">Korgaonkar</span>
+          <span className="block text-[#e2e8f0]">Prajwal</span>
+          <span className="block gradient-text text-glow-cyan">Korgaonkar</span>
         </h1>
 
         {/* Typewriter */}
         <div
-          className={`flex items-center justify-center gap-1 mb-6 transition-all duration-700 delay-200 ${
+          className={`flex items-center justify-center gap-1 mb-6 transition-all duration-700 delay-200 w-full ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          <span className="font-mono text-[#22d3ee] text-base sm:text-xl md:text-2xl font-medium min-h-[1.5em]">
+          <span className="font-mono text-[#22d3ee] text-sm sm:text-xl md:text-2xl font-medium min-h-[1.5em]">
             {typedText}
           </span>
           <span className="cursor" />
@@ -109,18 +111,18 @@ export default function Hero() {
 
         {/* Tagline */}
         <p
-          className={`text-[#64748b] text-sm md:text-lg w-full max-w-xl mx-auto mb-10 leading-relaxed font-body px-2 transition-all duration-700 delay-300 ${
+          className={`text-[#64748b] text-sm md:text-lg w-full max-w-xl mx-auto mb-10 leading-relaxed font-body transition-all duration-700 delay-300 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          Computer Engineering Student interested in{' '}
+          Computer Engineering Student interested in <br className="hidden sm:block" />
           <span className="text-[#94a3b8]">Full Stack Development</span> and{' '}
           <span className="text-[#94a3b8]">Problem Solving</span>
         </p>
 
-        {/* Buttons - Changed to flex-col on mobile so they stack perfectly */}
+        {/* Buttons - Strictly forced to column (stacked) on mobile w-full */}
         <div
-          className={`flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-[280px] sm:max-w-none mx-auto transition-all duration-700 delay-[400ms] ${
+          className={`flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0 transition-all duration-700 delay-[400ms] ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
@@ -158,10 +160,10 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - Hidden on tiny mobile to save space */}
       <button
         onClick={() => handleScroll('#about')}
-        className="hidden sm:block absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-[#475569] hover:text-[#22d3ee] transition-colors animate-bounce"
+        className="hidden sm:flex absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-[#475569] hover:text-[#22d3ee] transition-colors animate-bounce"
         aria-label="Scroll down"
       >
         <ChevronDown size={26} />

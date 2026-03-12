@@ -113,9 +113,9 @@ export default function Skills() {
 
         {/* Disclaimer note */}
         <div className="reveal mt-10 text-center">
-          <p className="font-mono text-[#475569] text-xs">
+          {/* <p className="font-mono text-[#475569] text-xs">
             * Skill percentages reflect honest self-assessment at this stage of learning
-          </p>
+          </p> */}
         </div>
       </div>
     </section>

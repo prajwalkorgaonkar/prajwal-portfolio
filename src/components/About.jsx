@@ -34,11 +34,11 @@ export default function About() {
                     color: '#22d3ee',
                   }}
                 >
-                  PK
+                  PGK
                 </div>
                 <div className="text-center px-4">
                   <p className="font-display font-bold text-[#e2e8f0] text-lg">Prajwal Korgaonkar</p>
-                  <p className="font-mono text-[#22d3ee] text-xs mt-1">CE Student · 2nd Year</p>
+                  <p className="font-mono text-[#22d3ee] text-xs mt-1">CSE Student · 2nd Year</p>
                 </div>
               </div>
             </div>

@@ -41,7 +41,7 @@ export default function Navbar() {
           className="font-mono text-[#22d3ee] text-lg font-medium tracking-wide hover:text-white transition-colors"
         >
           <span className="text-[#64748b]">&lt;</span>
-          PK
+          PGK
           <span className="text-[#64748b]">/&gt;</span>
         </a>
 

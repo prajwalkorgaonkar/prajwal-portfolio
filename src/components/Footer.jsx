@@ -12,13 +12,13 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-2 font-mono text-[#475569] text-sm">
           <span className="text-[#22d3ee]">&lt;</span>
-          <span>PK</span>
+          <span>PGK</span>
           <span className="text-[#22d3ee]">/&gt;</span>
           <span className="ml-2">Prajwal Korgaonkar</span>
         </div>
 
         <p className="text-[#475569] font-body text-xs flex items-center gap-1.5">
-          Built with <Heart size={11} className="text-[#22d3ee]" fill="#22d3ee" /> using React & Tailwind CSS
+          Built with <Heart size={11} className="text-[#22d3ee]" fill="#22d3ee" /> using React & Tailwind CSS by PGK
         </p>
 
         <div className="flex items-center gap-5">

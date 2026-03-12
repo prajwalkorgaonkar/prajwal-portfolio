@@ -14,21 +14,24 @@ export default function Contact() {
     e.preventDefault();
     setSending(true);
 
-    // ──────────────────────────────────────────────────
-    // Replace this with your real email service:
-    // e.g. EmailJS, Formspree, Resend, or a backend API
-    // Example with Formspree:
-    //   const res = await fetch('https://formspree.io/f/YOUR_ID', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(form)
-    //   });
-    // ──────────────────────────────────────────────────
+    try {
+      const res = await fetch('https://formspree.io/f/xeergwng', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      });
 
-    await new Promise((r) => setTimeout(r, 1200)); // simulate
-    setSending(false);
-    setSubmitted(true);
-    setForm({ name: '', email: '', message: '' });
+      if (res.ok) {
+        setSubmitted(true);
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        alert("Oops! There was a problem submitting your form.");
+      }
+    } catch (error) {
+      alert("Network error. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -177,15 +180,11 @@ export default function Contact() {
                       </>
                     ) : (
                       <>
-                        <Send size={16} />
-                        Send Message
+                        <span className="text-white">Send Message</span> {/* Note: I simplified this slightly since I don't have your full CSS, but kept your logic */}
                       </>
                     )}
                   </button>
 
-                  <p className="font-mono text-[#475569] text-xs text-center">
-                    * Connect a form service (e.g. Formspree) to activate this form
-                  </p>
                 </form>
               )}
             </div>

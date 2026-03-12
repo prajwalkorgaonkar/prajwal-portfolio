@@ -1,41 +1,37 @@
 import { Github, ExternalLink, Plus, Clock } from 'lucide-react';
 
-// ──────────────────────────────────────────────
-// Replace the placeholders below with your real
-// projects when ready. Each object can have:
-//   title, description, tech[], github, live
-// ──────────────────────────────────────────────
+
 const projects = [
   {
     id: 1,
     placeholder: true,
-    title: 'Project Title Here',
+    title: 'PrimeDrew',
     description:
-      'Add a short description of what this project does, the problem it solves, and what you learned while building it.',
+      'It is a vehicle rental website, Where you can host or rent vehicles',
     tech: ['HTML', 'CSS', 'JavaScript'],
     github: '#',
     live: null,
   },
-  {
-    id: 2,
-    placeholder: true,
-    title: 'Project Title Here',
-    description:
-      'Add a short description of what this project does, the problem it solves, and what you learned while building it.',
-    tech: ['C++', 'DSA'],
-    github: '#',
-    live: null,
-  },
-  {
-    id: 3,
-    placeholder: true,
-    title: 'Project Title Here',
-    description:
-      'Add a short description of what this project does, the problem it solves, and what you learned while building it.',
-    tech: ['Python', 'HTML', 'CSS'],
-    github: '#',
-    live: null,
-  },
+  // {
+  //   id: 2,
+  //   placeholder: true,
+  //   title: 'Project Title Here',
+  //   description:
+  //     'Add a short description of what this project does, the problem it solves, and what you learned while building it.',
+  //   tech: ['C++', 'DSA'],
+  //   github: '#',
+  //   live: null,
+  // },
+  // {
+  //   id: 3,
+  //   placeholder: true,
+  //   title: 'Project Title Here',
+  //   description:
+  //     'Add a short description of what this project does, the problem it solves, and what you learned while building it.',
+  //   tech: ['Python', 'HTML', 'CSS'],
+  //   github: '#',
+  //   live: null,
+  // },
 ];
 
 const techColors = {
@@ -75,7 +71,7 @@ function ProjectCard({ project, index }) {
         <div className="absolute top-3 right-3">
           <span className="flex items-center gap-1 font-mono text-[10px] text-[#475569] bg-[#1a2540] px-2 py-1 rounded-full">
             <Clock size={9} />
-            placeholder
+            {/* placeholder */}
           </span>
         </div>
       )}
@@ -138,11 +134,11 @@ export default function Projects() {
           <h2 className="section-title">
             Things I've <span className="gradient-text">Built</span>
           </h2>
-          <p className="text-[#475569] mt-3 font-mono text-xs max-w-md mx-auto leading-relaxed">
+          {/* <p className="text-[#475569] mt-3 font-mono text-xs max-w-md mx-auto leading-relaxed">
             These are placeholder cards — replace them with your real projects when ready.
             Each card is fully editable in{' '}
             <span className="text-[#22d3ee]">src/components/Projects.jsx</span>
-          </p>
+          </p> */}
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -151,7 +147,7 @@ export default function Projects() {
           ))}
 
           {/* Add more card */}
-          <div className="reveal reveal-delay-4 flex items-center justify-center border-2 border-dashed border-[#1a2540] rounded-xl min-h-[200px] hover:border-[#22d3ee]/30 transition-colors group cursor-pointer">
+          {/* <div className="reveal reveal-delay-4 flex items-center justify-center border-2 border-dashed border-[#1a2540] rounded-xl min-h-[200px] hover:border-[#22d3ee]/30 transition-colors group cursor-pointer">
             <div className="text-center">
               <div className="w-10 h-10 rounded-full border border-dashed border-[#1a2540] group-hover:border-[#22d3ee]/40 flex items-center justify-center mx-auto mb-3 transition-colors">
                 <Plus size={18} className="text-[#475569] group-hover:text-[#22d3ee] transition-colors" />
@@ -160,7 +156,7 @@ export default function Projects() {
                 Add your project
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
